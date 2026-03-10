@@ -1,47 +1,4 @@
-/*
-  # Data Mining Project Schema
 
-  1. New Tables
-    - `datasets`
-      - `id` (uuid, primary key)
-      - `name` (text) - Dataset name
-      - `openml_id` (integer) - OpenML dataset ID
-      - `description` (text) - Dataset description
-      - `num_instances` (integer) - Number of rows
-      - `num_features` (integer) - Number of columns
-      - `uploaded_at` (timestamptz) - Upload timestamp
-      - `data` (jsonb) - Actual dataset in JSON format
-      
-    - `preprocessing_results`
-      - `id` (uuid, primary key)
-      - `dataset_id` (uuid, foreign key)
-      - `missing_values` (jsonb) - Missing value statistics
-      - `outliers` (jsonb) - Outlier detection results
-      - `encodings` (jsonb) - Categorical encoding info
-      - `normalization` (jsonb) - Normalization parameters
-      - `created_at` (timestamptz)
-      
-    - `association_rules`
-      - `id` (uuid, primary key)
-      - `dataset_id` (uuid, foreign key)
-      - `antecedent` (text[]) - Items in antecedent
-      - `consequent` (text[]) - Items in consequent
-      - `support` (numeric) - Support value
-      - `confidence` (numeric) - Confidence value
-      - `lift` (numeric) - Lift value
-      - `created_at` (timestamptz)
-      
-    - `frequent_itemsets`
-      - `id` (uuid, primary key)
-      - `dataset_id` (uuid, foreign key)
-      - `items` (text[]) - Items in the itemset
-      - `support` (numeric) - Support value
-      - `created_at` (timestamptz)
-
-  2. Security
-    - Enable RLS on all tables
-    - Add policies for public access (educational project)
-*/
 
 CREATE TABLE IF NOT EXISTS datasets (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
